@@ -11,7 +11,7 @@ import {CommonModule} from '@angular/common';
   styleUrl: './users.component.scss'
 })
 export class UsersComponent implements OnInit {
-  users: any[] = []; // Speichert die Benutzerliste
+  users: any[] = [];
   isLoading = true;
   errorMessage = '';
 
@@ -38,8 +38,8 @@ export class UsersComponent implements OnInit {
 
     this.http.get<any[]>(this.apiUrl, { headers }).subscribe({
       next: (data) => {
-        console.log('👥 Benutzer-Daten von API:', data); // ✅ Debugging
-        this.users = data; // ✅ Direkt speichern, da `isAdmin` bereits existiert
+        console.log('👥 Benutzer-Daten von API:', data);
+        this.users = data;
         this.isLoading = false;
       },
       error: (error) => {
@@ -64,7 +64,7 @@ export class UsersComponent implements OnInit {
     this.http.post(`${this.apiUrl}/${userId}/promote`, {}, { headers }).subscribe({
       next: () => {
         alert('✅ Benutzer wurde zum Admin befördert!');
-        this.fetchUsers(); // Liste neu laden
+        this.fetchUsers();
       },
       error: (error) => {
         console.error('❌ Fehler beim Befördern des Benutzers:', error);
