@@ -18,10 +18,11 @@ export const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
-  {
-    path:"category",
-    loadChildren:() =>import('./pages/category/category.routes').then(v =>v.routes)
-  },
+  { path: 'categories',
+    loadChildren: () =>
+      import('./pages/category/category.routes')
+        .then(m => m.categoryRoutes)
+  }
 
 ];
 

@@ -1,1 +1,11 @@
-<p>category works!</p>
+<h2>Kategorie bearbeiten</h2>
+
+<form [formGroup]="categoryForm" (ngSubmit)="updateCategory()">
+  <label for="name">Kategoriename</label>
+  <input id="name" formControlName="name" type="text" required>
+
+  <label for="active">Aktiv</label>
+  <input id="active" formControlName="active" type="checkbox">
+
+  <button type="submit" [disabled]="!isAdmin">Kategorie speichern</button>
+</form>

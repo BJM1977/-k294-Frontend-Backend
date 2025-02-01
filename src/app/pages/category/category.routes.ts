@@ -1,24 +1,11 @@
-import {CategoryListComponent} from './category-list/category-list.component';
-import {CategoryModifyComponent} from './category-modify/category-modify.component';
-import {CategoryDetailComponent} from './category-detail/category-detail.component';
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { CategoryCreateComponent } from './category-create/category-create.component';
+import { CategoryComponent } from './category.component';
 
-export const routes:Routes=[
-{
-  path:"list",
-    component:CategoryListComponent
-},
-{
-  path:"create",
-    component:CategoryModifyComponent
-},
-{
-  path:"edit/:id",
-    component:CategoryModifyComponent
-},
-{
-  path:":id",
-    component:CategoryDetailComponent
-},
+export const categoryRoutes: Routes = [
+  { path: 'list', component: CategoryListComponent },
+  { path: 'create', component: CategoryCreateComponent },
+  { path: 'modify/:id', component: CategoryComponent }
+];
 
- ];
