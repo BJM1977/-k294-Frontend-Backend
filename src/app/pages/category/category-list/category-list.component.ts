@@ -59,7 +59,7 @@ export class CategoryListComponent implements OnInit {
       console.log('🔄 Navigiere zu:', `/categories/modify/${this.selectedCategoryId}`);
       this.router.navigate(['/categories/modify', this.selectedCategoryId]);
     } else {
-      alert('⚠️ Keine Kategorie ausgewählt!');
+      alert('⚠️ Keine Kategorie ausgewählt!, probier es nochmal, es geht');
     }
   }
 
