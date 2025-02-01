@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CommonModule} from '@angular/common';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'pm-users',
@@ -14,15 +15,24 @@ export class UsersComponent implements OnInit {
   users: any[] = [];
   isLoading = true;
   errorMessage = '';
+  isAdmin = false;
 
 
 
   private apiUrl = 'https://294.cyrotech.ch/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.checkAdminAccess();
     this.fetchUsers();
+  }
+
+  checkAdminAccess() {
+    const user = this.authService.getCurrentUser();
+    if (user && user.roles.includes('admin')) {
+      this.isAdmin = true; // ✅ Der Benutzer ist ein Admin
+    }
   }
 
   fetchUsers(): void {
@@ -51,6 +61,11 @@ export class UsersComponent implements OnInit {
   }
 
   promoteUser(userId: number): void {
+    if (!this.isAdmin) {
+      alert('❌ Zugriff verweigert! Nur Admins dürfen Benutzer befördern.');
+      return;
+    }
+
     const token = localStorage.getItem('authToken');
     if (!token) {
       alert('Nicht eingeloggt!');
@@ -64,7 +79,7 @@ export class UsersComponent implements OnInit {
     this.http.post(`${this.apiUrl}/${userId}/promote`, {}, { headers }).subscribe({
       next: () => {
         alert('✅ Benutzer wurde zum Admin befördert!');
-        this.fetchUsers();
+        this.fetchUsers(); // Benutzerliste neu laden
       },
       error: (error) => {
         console.error('❌ Fehler beim Befördern des Benutzers:', error);
