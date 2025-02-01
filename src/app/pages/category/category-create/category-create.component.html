@@ -1,1 +1,12 @@
-<p>category-create works!</p>
+<h2>Neue Kategorie erstellen</h2>
+
+<form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
+  <label for="name">Kategoriename</label>
+  <input id="name" formControlName="name" type="text" required>
+
+  <label for="active">Aktiv</label>
+  <input id="active" formControlName="active" type="checkbox">
+
+  <button type="submit">Kategorie erstellen</button>
+</form>
+

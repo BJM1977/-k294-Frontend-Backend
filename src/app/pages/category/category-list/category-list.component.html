@@ -1,1 +1,23 @@
-<p>category-list works!</p>
+<h2>Kategorien</h2>
+
+<!-- Ladeanzeige -->
+<div *ngIf="isLoading">
+  <p>⏳ Lade Kategorien...</p>
+</div>
+
+<!-- Fehleranzeige -->
+<div *ngIf="errorMessage">
+  <p class="error">{{ errorMessage }}</p>
+</div>
+
+<!-- Kategorienliste -->
+<ul *ngIf="!isLoading && categories.length > 0">
+  <li *ngFor="let category of categories" (click)="selectCategory(category.id)">
+    <span>{{ category.name }} ({{ category.active ? 'Aktiv' : 'Deaktiviert' }})</span>
+
+    <!-- ✅ Nur für Admins -->
+    <button *ngIf="isAdmin" (click)="navigateToModify()">📝 Bearbeiten</button>
+  </li>
+</ul>
+
+<p *ngIf="!isLoading && categories.length === 0">Keine Kategorien vorhanden.</p>
