@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit {
       return;
     }
 
-    const token = localStorage.getItem('authToken'); // ✅ Token abrufen
+    const token = localStorage.getItem('authToken'); // Token abrufen
     if (!token) {
       alert('❌ Nicht eingeloggt! Löschen nicht erlaubt.');
       return;
