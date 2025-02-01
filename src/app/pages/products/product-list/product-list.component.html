@@ -8,6 +8,8 @@
 
 <div *ngIf="!isLoading && !errorMessage">
   <h2>Produktübersicht</h2>
+
+  <!-- 📌 Produktkarten-Ansicht -->
   <div class="product-grid">
     <div class="product-card" *ngFor="let product of products">
       <img [src]="product.image" alt="{{ product.name }}" class="product-image">
@@ -15,17 +17,44 @@
       <p>SKU: {{ product.sku }}</p>
       <p>Preis: {{ product.price | currency:'EUR' }}</p>
       <p>Verfügbar: {{ product.stock }} Stück</p>
+
+      <!-- ✅ Menü pro Produkt -->
+      <button mat-button [matMenuTriggerFor]="productMenu" (click)="setProductId(product.id)">
+        🔽 Aktionen
+      </button>
     </div>
-
-
-  <div *ngFor="let product of products">
-    <p>{{ product.name }}</p>
-    <button mat-button [matMenuTriggerFor]="productMenu" (click)="setProductId(product.id)">Menü öffnen</button>
   </div>
 
+  <!-- 📌 Menü für Aktionen (z.B. Bearbeiten/Löschen) -->
   <mat-menu #productMenu>
-    <a mat-menu-item (click)="navigateToModify()">Produkt bearbeiten</a>
+    <a mat-menu-item (click)="navigateToModify()">✏️ Produkt bearbeiten</a>
+    <a mat-menu-item *ngIf="selectedProductId !== null" (click)="deleteProduct(selectedProductId)">
+      🗑️ Produkt löschen
+    </a>
+
   </mat-menu>
 
-  </div>
-
+  <!-- 📌 Admin-Tabellenansicht -->
+  <table *ngIf="products.length > 0">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Preis</th>
+      <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | currency }}</td>
+      <td>
+        <button mat-button [matMenuTriggerFor]="productMenu" (click)="setProductId(product.id)">
+          🔽 Menü
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
