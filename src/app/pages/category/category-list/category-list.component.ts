@@ -30,7 +30,7 @@ export class CategoryListComponent implements OnInit {
   checkAdminAccess() {
     const user = this.authService.getCurrentUser();
     if (user && user.roles.includes('admin')) {
-      this.isAdmin = true; // ✅ Admin erkannt
+      this.isAdmin = true; //  Admin erkannt
     }
   }
 

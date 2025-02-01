@@ -83,7 +83,7 @@ export class ProductListComponent implements OnInit {
       this.http.delete(`${this.apiUrl}/${productId}`, {headers}).subscribe({
         next: () => {
           alert('✅ Produkt erfolgreich gelöscht!');
-          this.fetchProducts(); // ✅ Produktliste nach dem Löschen aktualisieren
+          this.fetchProducts();
         },
         error: (error) => {
           console.error('❌ Fehler beim Löschen des Produkts:', error);

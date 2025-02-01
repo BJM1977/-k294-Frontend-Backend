@@ -14,8 +14,8 @@ export class CategoryComponent implements OnInit {
   categoryForm!: FormGroup;
   categoryId!: number;
   isAdmin = false;
-  isLoading = true; // ✅ Variable hinzugefügt, um Ladeanzeige zu steuern
-  errorMessage = ''; // ✅ Variable für Fehlernachrichten
+  isLoading = true;
+  errorMessage = '';
   selectedCategoryId: number | null = null;
 
   private apiUrl = 'https://294.cyrotech.ch/categories';
@@ -66,7 +66,7 @@ export class CategoryComponent implements OnInit {
       next: (category) => {
         if (category) {
           this.categoryForm.patchValue(category);
-          this.isLoading = false; // ✅ Sobald die Daten geladen sind, Ladeanzeige ausblenden
+          this.isLoading = false;
         }
       },
       error: (error) => {
