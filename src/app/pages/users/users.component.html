@@ -14,7 +14,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Rolle</th>
-    <th>Aktion</th>
+    <th *ngIf="isAdmin">Aktionen</th>
   </tr>
   </thead>
   <tbody>
@@ -23,11 +23,8 @@
     <td>{{ user.firstName }} {{ user.lastName }}</td>
     <td>{{ user.email }}</td>
     <td>{{ user.isAdmin ? 'Admin' : 'Benutzer' }}</td>
-    <td>
-    <td>
-      <button *ngIf="!user.isAdmin" (click)="promoteUser(user.id)">
-        🏆 Zum Admin befördern
-      </button>
+    <td *ngIf="isAdmin">
+      <button *ngIf="!user.isAdmin" (click)="promoteUser(user.id)">🏆 Zum Admin befördern</button>
     </td>
   </tr>
   </tbody>
