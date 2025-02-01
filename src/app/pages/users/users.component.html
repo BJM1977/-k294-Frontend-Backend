@@ -1,0 +1,38 @@
+<h2>Benutzerverwaltung</h2>
+
+<!-- Falls noch geladen wird -->
+<p *ngIf="isLoading">⏳ Benutzer werden geladen...</p>
+
+<!-- Falls Fehler aufgetreten sind -->
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+<!-- Benutzerliste anzeigen -->
+<table *ngIf="users.length > 0">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Rolle</th>
+    <th>Aktion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{ user.id }}</td>
+    <td>{{ user.firstName }} {{ user.lastName }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.isAdmin ? 'Admin' : 'Benutzer' }}</td>
+    <td>
+    <td>
+      <button *ngIf="!user.isAdmin" (click)="promoteUser(user.id)">
+        🏆 Zum Admin befördern
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Falls keine Benutzer vorhanden sind -->
+<p *ngIf="!isLoading && users.length === 0">Keine Benutzer gefunden.</p>
+

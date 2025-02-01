@@ -1,0 +1,53 @@
+<div *ngIf="isAdmin; else noAccess">
+  <h2>Produkt bearbeiten</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Produktname</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Produktbild (URL)</mat-label>
+      <input matInput formControlName="image">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Beschreibung</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Preis (€)</mat-label>
+      <input matInput type="number" formControlName="price">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Verfügbarer Bestand</mat-label>
+      <input matInput type="number" formControlName="stock">
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="active">Aktiv</mat-slide-toggle>
+
+    <mat-form-field>
+      <mat-label>Kategorie-ID</mat-label>
+      <input matInput formControlName="categoryId">
+    </mat-form-field>
+
+
+
+    <button mat-raised-button color="primary" type="submit">Speichern</button>
+  </form>
+</div>
+
+<ng-template #noAccess>
+  <h2>Zugriff verweigert</h2>
+  <p>Nur Administratoren dürfen Produkte bearbeiten.</p>
+</ng-template>
+
+
+

@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <div class="flex items-center justify-between">
+    <a routerLink="/" class="text-white">
+      Produkteshop
+    </a>
+    <div>
+      <a mat-button  color="primary" [matMenuTriggerFor]="matMenu">Produkte</a>
+      <a mat-button  color="primary" [matMenuTriggerFor]="matMenu2">Kategorien</a>
+      <a mat-button  color="primary" [matMenuTriggerFor]="matMenu3">LogIn</a>
+      <a mat-button  color="primary" [matMenuTriggerFor]="matMenu4">Users</a>
+
+    </div>
+    <mat-menu #matMenu>
+      <a mat-menu-item routerLink="/products/list">Produkteübersicht</a>
+      <a mat-menu-item routerLink="/products/create">Produkt erstellen</a>
+      <a mat-menu-item (click)="navigateToModify()">Produkt bearbeiten</a>
+    </mat-menu>
+    <mat-menu #matMenu2>
+      <a mat-menu-item routerLink="/category/list">Kategorienübersicht</a>
+      <a mat-menu-item routerLink="/category/detail">Details</a>
+      <a mat-menu-item routerLink="/category/modify">Bearbeiten</a>
+    </mat-menu>
+    <mat-menu #matMenu3>
+    <a mat-menu-item routerLink="/auth/login">LogIn</a>
+    <a mat-menu-item routerLink="/auth/register">Registrierung</a>
+  </mat-menu>
+    <mat-menu #matMenu4>
+      <a mat-menu-item routerLink="/users">Benutzerverwaltung</a>
+    </mat-menu>
+  </div>
+</mat-toolbar>

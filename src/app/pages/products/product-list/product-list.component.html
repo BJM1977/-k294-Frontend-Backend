@@ -1,0 +1,31 @@
+<div *ngIf="isLoading">
+  <p>⏳ Lade Produkte...</p>
+</div>
+
+<div *ngIf="errorMessage">
+  <p class="error">{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="!isLoading && !errorMessage">
+  <h2>Produktübersicht</h2>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.image" alt="{{ product.name }}" class="product-image">
+      <h3>{{ product.name }}</h3>
+      <p>SKU: {{ product.sku }}</p>
+      <p>Preis: {{ product.price | currency:'EUR' }}</p>
+      <p>Verfügbar: {{ product.stock }} Stück</p>
+    </div>
+
+
+  <div *ngFor="let product of products">
+    <p>{{ product.name }}</p>
+    <button mat-button [matMenuTriggerFor]="productMenu" (click)="setProductId(product.id)">Menü öffnen</button>
+  </div>
+
+  <mat-menu #productMenu>
+    <a mat-menu-item (click)="navigateToModify()">Produkt bearbeiten</a>
+  </mat-menu>
+
+  </div>
+

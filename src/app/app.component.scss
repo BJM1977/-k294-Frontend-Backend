@@ -1,0 +1,20 @@
+:host {
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas: "header"
+                        "main"
+                        "footer";
+  grid-template-rows: auto 1fr auto;
+}
+
+pm-header {
+  grid-area: header;
+}
+
+main{
+  grid-area: main;
+}
+
+pm-footer {
+  grid-area: footer;
+}

@@ -1,0 +1,51 @@
+<div *ngIf="isAdmin; else noAccess">
+  <h2>Produkt erstellen</h2>
+  <div class="flex flex-col gap-10px">
+
+    <mat-form-field>
+      <mat-label>SKU</mat-label>
+      <input matInput [formControl]="skuControl">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Produktname</mat-label>
+      <input matInput [formControl]="nameControl">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Produktbild (URL)</mat-label>
+      <input matInput [formControl]="imageControl">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Beschreibung</mat-label>
+      <textarea matInput [formControl]="descriptionControl"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Preis (€)</mat-label>
+      <input matInput [formControl]="priceControl">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Verfügbarer Bestand</mat-label>
+      <input matInput [formControl]="stockControl">
+    </mat-form-field>
+
+    <mat-slide-toggle [formControl]="activeControl">Aktiv</mat-slide-toggle>
+
+    <mat-form-field>
+      <mat-label>Kategorie-ID</mat-label>
+      <input matInput [formControl]="categoryIdControl">
+    </mat-form-field>
+
+
+
+    <button mat-raised-button color="primary" (click)="onSubmit()">Speichern</button>
+  </div>
+</div>
+
+<ng-template #noAccess>
+  <h2>Zugriff verweigert</h2>
+  <p>Nur Administratoren können Produkte erstellen.</p>
+</ng-template>

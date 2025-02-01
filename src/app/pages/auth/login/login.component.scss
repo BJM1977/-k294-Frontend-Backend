@@ -1,0 +1,31 @@
+.custom-card {
+  width: 400px;
+  height: 500px;
+  margin: auto; // Zentriert die Karte
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Verteilung des Inhalts
+  padding: 16px; // Abstand innen
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Leichter Schatten
+  border-radius: 8px; // Abgerundete Ecken
+
+  // Responsive Anpassung
+  @media (max-width: 600px) {
+    width: 100%; // Karte nimmt die gesamte Breite ein
+    height: auto; // Automatische Höhe
+  }
+  .username {
+    color: white; // Ändern Sie die Farbe nach Wunsch
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+}
+
