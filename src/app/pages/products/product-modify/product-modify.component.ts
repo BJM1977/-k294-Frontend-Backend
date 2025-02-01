@@ -33,11 +33,11 @@ import {MatSlideToggle} from '@angular/material/slide-toggle';
 })
 export class ProductModifyComponent implements OnInit {
   productFormGroup!: FormGroup;
-  isAdmin = false; // Standardmäßig kein Admin
+  isAdmin = false;
 
   constructor(
     private authService: AuthService,
-    private productService: ProductService, // <--- ProductService hier einfügen
+    private productService: ProductService,
     private router: Router,
     private fb: FormBuilder
   ) {}
@@ -45,7 +45,7 @@ export class ProductModifyComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkAdminAccess();
-    this.initForm(); // Formular initialisieren
+    this.initForm();
   }
 
   initForm() {
@@ -56,7 +56,7 @@ export class ProductModifyComponent implements OnInit {
       description: new FormControl('', Validators.required),
       price: new FormControl(0, [Validators.required, Validators.min(0)]),
       stock: new FormControl(0, [Validators.required, Validators.min(0)]),
-      active: new FormControl(true), // Standardmäßig aktiv setzen
+      active: new FormControl(true),
       categoryId: new FormControl('', Validators.required)
 
     });
@@ -88,12 +88,12 @@ export class ProductModifyComponent implements OnInit {
   }
 
   checkAdminAccess() {
-    const user = this.authService.getCurrentUser(); // Benutzer abrufen
+    const user = this.authService.getCurrentUser();
     if (!user || !user.roles.includes('admin')) {
       alert('Zugriff verweigert! Nur Admins dürfen Produkte erstellen.');
-      this.router.navigate(['/']); // Weiterleitung zur Startseite
+      this.router.navigate(['/']);
     } else {
-      this.isAdmin = true; // Benutzer ist Admin, Zugriff gewährt
+      this.isAdmin = true;
     }
   }
 
