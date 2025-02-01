@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButton, MatButtonModule} from '@angular/material/button';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardModule} from '@angular/material/card';
+import {MatCard, MatCardContent, MatCardHeader, MatCardModule} from '@angular/material/card';
 import {MatFormField, MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import {MatInput, MatInputModule} from '@angular/material/input';
 import {AuthService} from '../../../services/auth.service';
@@ -13,7 +13,6 @@ import {CommonModule} from '@angular/common';
     FormsModule,
     MatButton,
     MatCard,
-    MatCardActions,
     MatCardContent,
     MatCardHeader,
     MatFormField,
